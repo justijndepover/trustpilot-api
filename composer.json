@@ -1,0 +1,35 @@
+{
+    "name": "justijndepover/trustpilot-api",
+    "description": "PHP Client for the Trustpilot API",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Justijn Depover",
+            "email": "justijndepover@gmail.com"
+        }
+    ],
+    "keywords": [
+        "php",
+        "trustpilot",
+        "api"
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "^7.3"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.4",
+        "justijndepover/php-check": "^0.12.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Justijndepover\\Trustpilot\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Justijndepover\\Trustpilot\\Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
