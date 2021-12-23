@@ -26,15 +26,44 @@ To use the plugin in Laravel applications, please refer to the [Laravel usage pa
 
 Connecting to Trustpilot:
 ```php
+$trustpilot = new Trustpilot(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+// open the trustpilot login
+header("Location: {$trustpilot->redirectForAuthorizationUrl()}");
+exit;
+```
+
+After connecting, Trustpilot will send a request back to your redirect uri.
+```php
+$trustpilot = new Trustpilot(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+
+if ($_GET['error']) {
+    // your application should handle this error
+}
+
+$trustpilot->setAuthorizationCode($_GET['code']);
+$trustpilot->connect();
+
+// store these values:
+$accessToken = $trustpilot->getAccessToken();
+$refreshToken = $trustpilot->getRefreshToken();
+$expiresAt = $trustpilot->getTokenExpiresAt();
 ```
 
 Your application is now connected. To start fetching data:
 ```php
+$trustpilot = new Trustpilot(CLIENT_ID, CLIENT_SECRET, REDIRECT_URI);
+$trustpilot->setAccessToken($accessToken);
+$trustpilot->setRefreshToken($refreshToken);
+$trustpilot->setTokenExpiresAt($expiresAt);
+
+// fetch data:
+$trustpilot->get($url);
+
+// you should always store your tokens at the end of a call
+$accessToken = $trustpilot->getAccessToken();
+$refreshToken = $trustpilot->getRefreshToken();
+$expiresAt = $trustpilot->getTokenExpiresAt();
 ```
-
-## Available methods
-
-## Rate limiting
 
 ## Security
 
