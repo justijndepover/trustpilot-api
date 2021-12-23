@@ -79,10 +79,10 @@ class TrustpilotServiceProvider extends ServiceProvider implements DeferrablePro
                     $trustpilot->setRefreshToken('');
 
                     Storage::disk('local')->put('trustpilot.json', json_encode([
-                    'accessToken' => $trustpilot->getAccessToken(),
-                    'refreshToken' => $trustpilot->getRefreshToken(),
-                    'expiresAt' => $trustpilot->getTokenExpiresAt(),
-                ]));
+                        'accessToken' => $trustpilot->getAccessToken(),
+                        'refreshToken' => $trustpilot->getRefreshToken(),
+                        'expiresAt' => $trustpilot->getTokenExpiresAt(),
+                    ]));
                 }
             }
 
